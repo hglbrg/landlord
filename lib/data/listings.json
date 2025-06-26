@@ -1,0 +1,319 @@
+{
+  "siteInfo": {
+    "owner": {
+      "firstName": "Anna",
+      "lastName": "Svensson",
+      "email": "anna.svensson@email.com",
+      "phone": "+46701234567",
+      "avatar": "/anna-avatar.png",
+      "bio": "Privatperson som hyr ut lägenheter i Söderköping med omnejd. Svarar oftast inom 2 timmar.",
+      "responseTimeHours": 2,
+      "verified": true
+    },
+    "company": {
+      "name": null,
+      "type": "private"
+    },
+    "contact": {
+      "email": "anna.svensson@email.com",
+      "phone": "+46701234567",
+      "address": "Söderköping, Sverige"
+    }
+  },
+  "listings": [
+    {
+      "id": "soder-001",
+      "slug": "ljus-3a-med-balkong-sodermalm-gotgatan-45",
+      "status": "available",
+      "featured": false,
+
+      "basic": {
+        "title": "Ljus 3:a med balkong i hjärtat av Södermalm",
+        "description": "Välkommen till denna underbara 3:a i hjärtat av Södermalm! Lägenheten är ljus och rymlig med ett fantastiskt läge bara några minuter från Slussen och Medborgarplatsen.\n\nLägenheten har en genomtänkt planlösning med ett rymligt vardagsrum som vetter mot den lugna bakgården, ett modernt kök med goda arbetsytor och plats för matbord. De två sovrummen är välsituerade med god förvaring, och det stora sovrummet har utgång till den charmiga balkongen med morgonsol.\n\nBadrummet är helkaklat och renoverat 2022 med dusch, tvättmaskin och torktumlare. Lägenheten har också en praktisk hall med inbyggd garderob och förråd.\n\nPerfekt för dig som vill bo centralt med närhet till allt som Södermalm har att erbjuda - mysiga kaféer, restauranger, butiker och grönområden. Tunnelbanan ligger bara 5 minuter bort och du når city på 10 minuter.",
+        "shortDescription": "Ljus 3:a med balkong i hjärtat av Södermalm. Renoverat badrum, närhet till tunnelbana och allt som Söder erbjuder."
+      },
+
+      "location": {
+        "streetAddress": "Götgatan 45",
+        "postalCode": "116 21",
+        "city": "Stockholm",
+        "area": "Södermalm",
+        "country": "SE",
+        "coordinates": {
+          "latitude": 59.3141,
+          "longitude": 18.0687
+        }
+      },
+
+      "specifications": {
+        "rentAmount": 18500,
+        "currency": "SEK",
+        "sizeSqm": 78,
+        "rooms": 3,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floor": 3,
+        "totalFloors": 5
+      },
+
+      "features": {
+        "balcony": {
+          "has": true,
+          "direction": "söderläge",
+          "description": "Charmig balkong med morgonsol"
+        },
+        "garden": false,
+        "parking": false,
+        "elevator": false,
+        "storage": true,
+        "petsAllowed": false,
+        "smokingAllowed": false
+      },
+
+      "amenities": {
+        "laundryRoom": true,
+        "bikeStorage": true,
+        "fiberInternet": true,
+        "heatingIncluded": true,
+        "waterIncluded": true,
+        "electricityIncluded": false,
+        "internetIncluded": true
+      },
+
+      "rental": {
+        "depositAmount": 37000,
+        "depositMonths": 2.0,
+        "minimumRentalPeriod": 12,
+        "availableFrom": "2025-08-01",
+        "leaseType": "long_term",
+        "furnished": false
+      },
+
+      "property": {
+        "yearBuilt": 1932,
+        "lastRenovated": 2020,
+        "bathroomRenovated": 2022,
+        "kitchenRenovated": 2020,
+        "condition": "excellent"
+      },
+
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=400&fit=crop",
+          "alt": "Vardagsrum med stora fönster och ljus inredning",
+          "caption": "Rymligt vardagsrum med mycket naturligt ljus",
+          "roomType": "vardagsrum",
+          "isMain": true,
+          "sortOrder": 1
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=400&fit=crop",
+          "alt": "Modernt kök med vita skåp och mörka bänkskivor",
+          "caption": "Fullt utrustat kök med goda arbetsytor",
+          "roomType": "kök",
+          "isMain": false,
+          "sortOrder": 2
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=800&h=400&fit=crop",
+          "alt": "Ljust sovrum med dubbelsäng",
+          "caption": "Huvudsovrum med utgång till balkong",
+          "roomType": "sovrum",
+          "isMain": false,
+          "sortOrder": 3
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1564540516-9b77ad7b5f78?w=800&h=400&fit=crop",
+          "alt": "Renoverat badrum med dusch",
+          "caption": "Helkaklat badrum renoverat 2022",
+          "roomType": "badrum",
+          "isMain": false,
+          "sortOrder": 4
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=800&h=400&fit=crop",
+          "alt": "Balkong med morgonsol och utsikt",
+          "caption": "Balkong i söderläge med morgonsol",
+          "roomType": "balkong",
+          "isMain": false,
+          "sortOrder": 5
+        }
+      ],
+
+      "transport": [
+        {
+          "type": "tunnelbana",
+          "stationName": "Slussen",
+          "walkingMinutes": 5,
+          "lines": ["Röda linjen", "Gröna linjen"]
+        },
+        {
+          "type": "bus",
+          "stationName": "Götgatan",
+          "walkingMinutes": 2,
+          "lines": ["53", "76"]
+        }
+      ],
+
+      "nearbyAmenities": [
+        {
+          "type": "grocery",
+          "name": "ICA Maxi Södermalm",
+          "walkingMinutes": 8,
+          "description": "Stor mataffär med brett sortiment"
+        },
+        {
+          "type": "restaurant",
+          "name": "Södermalms restauranger",
+          "walkingMinutes": 5,
+          "description": "Mängder av kaféer och restauranger"
+        },
+        {
+          "type": "park",
+          "name": "Tantolunden",
+          "walkingMinutes": 15,
+          "description": "Stor park med grönområden"
+        }
+      ],
+
+      "meta": {
+        "createdAt": "2025-06-26T10:00:00Z",
+        "updatedAt": "2025-06-26T10:00:00Z",
+        "publishedAt": "2025-06-26T10:00:00Z",
+        "viewsCount": 0,
+        "seoTitle": "Ljus 3:a med balkong i Södermalm - 18500 kr/mån",
+        "seoDescription": "Ljus 3-rumslägenhet med balkong i hjärtat av Södermalm. Renoverat badrum, närhet till tunnelbana. Tillgänglig från augusti 2025."
+      }
+    },
+    {
+      "id": "soderkoping-002",
+      "slug": "mysig-2a-soderkoping-centrum",
+      "status": "available",
+      "featured": true,
+
+      "basic": {
+        "title": "Mysig 2:a i Söderköpings centrum",
+        "description": "Charmig 2-rumslägenhet mitt i Söderköpings historiska centrum. Lägenheten ligger i en vacker gammal byggnad från 1800-talet och har behållit mycket av sin ursprungliga charm med synliga bjälkar och gamla plankgolv.\n\nLägenheten har ett mysigt vardagsrum med kamin, ett litet men funktionellt kök och ett rymligt sovrum. Från fönstren har du utsikt över den pittoreska Stora torget.\n\nPerfekt för dig som vill bo mitt i hjärtat av Söderköping med gångavstånd till Göta kanal, mysiga butiker och restauranger. Allt du behöver finns inom några minuters promenad.",
+        "shortDescription": "Charmig 2:a i historisk byggnad mitt i Söderköpings centrum med utsikt över Stora torget."
+      },
+
+      "location": {
+        "streetAddress": "Stora Torget 12",
+        "postalCode": "614 30",
+        "city": "Söderköping",
+        "area": "Centrum",
+        "country": "SE",
+        "coordinates": {
+          "latitude": 58.4858,
+          "longitude": 16.3084
+        }
+      },
+
+      "specifications": {
+        "rentAmount": 12500,
+        "currency": "SEK",
+        "sizeSqm": 52,
+        "rooms": 2,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floor": 2,
+        "totalFloors": 3
+      },
+
+      "features": {
+        "balcony": {
+          "has": false
+        },
+        "garden": false,
+        "parking": true,
+        "elevator": false,
+        "storage": true,
+        "petsAllowed": true,
+        "smokingAllowed": false
+      },
+
+      "amenities": {
+        "laundryRoom": true,
+        "bikeStorage": true,
+        "fiberInternet": true,
+        "heatingIncluded": true,
+        "waterIncluded": true,
+        "electricityIncluded": true,
+        "internetIncluded": false
+      },
+
+      "rental": {
+        "depositAmount": 25000,
+        "depositMonths": 2.0,
+        "minimumRentalPeriod": 12,
+        "availableFrom": "2025-07-15",
+        "leaseType": "long_term",
+        "furnished": false
+      },
+
+      "property": {
+        "yearBuilt": 1847,
+        "lastRenovated": 2019,
+        "bathroomRenovated": 2019,
+        "kitchenRenovated": 2019,
+        "condition": "good"
+      },
+
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=400&fit=crop",
+          "alt": "Vardagsrum med synliga bjälkar och kamin",
+          "caption": "Mysigt vardagsrum med original bjälkar och öppen spis",
+          "roomType": "vardagsrum",
+          "isMain": true,
+          "sortOrder": 1
+        }
+      ],
+
+      "transport": [
+        {
+          "type": "bus",
+          "stationName": "Söderköping centrum",
+          "walkingMinutes": 2,
+          "lines": ["215", "216"]
+        }
+      ],
+
+      "nearbyAmenities": [
+        {
+          "type": "grocery",
+          "name": "ICA Nära",
+          "walkingMinutes": 3,
+          "description": "Närbutik mitt i centrum"
+        },
+        {
+          "type": "restaurant",
+          "name": "Restaurang Söderköping",
+          "walkingMinutes": 1,
+          "description": "Lokala restauranger runt torget"
+        },
+        {
+          "type": "historic",
+          "name": "Göta kanal",
+          "walkingMinutes": 5,
+          "description": "Historiska kanalen med slussar"
+        }
+      ],
+
+      "meta": {
+        "createdAt": "2025-06-26T11:00:00Z",
+        "updatedAt": "2025-06-26T11:00:00Z",
+        "publishedAt": "2025-06-26T11:00:00Z",
+        "viewsCount": 0,
+        "seoTitle": "Mysig 2:a i Söderköping centrum - 12500 kr/mån",
+        "seoDescription": "Charmig 2-rumslägenhet i historisk byggnad mitt i Söderköping. Utsikt över Stora torget, nära Göta kanal."
+      }
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-06-26T12:00:00Z",
+    "totalListings": 2,
+    "availableListings": 2,
+    "version": "1.0"
+  }
+}
