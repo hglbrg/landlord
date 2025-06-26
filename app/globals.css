@@ -1,42 +1,299 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Frosted Fern Color Palette Override */
+[data-theme="light"],
+:root:not([data-theme="dark"]),
+:host(:not([data-theme="dark"])) {
+  /* Primary colors - Deep sage */
+  --pico-primary: #748469;
+  --pico-primary-background: #748469;
+  --pico-primary-border: #748469;
+  --pico-primary-underline: rgba(116, 132, 105, 0.5);
+  --pico-primary-hover: #5f6e56;
+  --pico-primary-hover-background: #5f6e56;
+  --pico-primary-hover-border: #5f6e56;
+  --pico-primary-hover-underline: #5f6e56;
+  --pico-primary-focus: rgba(116, 132, 105, 0.5);
+
+  /* Secondary colors - Lighter sage */
+  --pico-secondary: #abb290;
+  --pico-secondary-background: #abb290;
+  --pico-secondary-border: #abb290;
+  --pico-secondary-underline: rgba(171, 178, 144, 0.5);
+  --pico-secondary-hover: #95a07a;
+  --pico-secondary-hover-background: #95a07a;
+  --pico-secondary-hover-border: #95a07a;
+  --pico-secondary-hover-underline: #95a07a;
+  --pico-secondary-focus: rgba(171, 178, 144, 0.25);
+
+  /* Background colors - Warm creams */
+  --pico-background-color: #f6f6ee;
+  --pico-card-background-color: #f9ead7;
+  --pico-card-sectioning-background-color: #f6f6ee;
+  --pico-form-element-background-color: #f9ead7;
+  --pico-form-element-active-background-color: #f6f6ee;
+
+  /* Accent color - Muted blue-green */
+  --pico-accent: #aac1b1;
+
+  /* Border colors using warm tones */
+  --pico-muted-border-color: #e8e5d8;
+  --pico-card-border-color: #e8e5d8;
+  --pico-form-element-border-color: #d4d1c4;
+  --pico-form-element-active-border-color: #748469;
+
+  /* Text colors - warmer grays */
+  --pico-color: #4a4941;
+  --pico-muted-color: #6b6860;
+  --pico-h1-color: #3d3b34;
+  --pico-h2-color: #4a4941;
+  --pico-h3-color: #575650;
+  --pico-h4-color: #6b6860;
+  --pico-h5-color: #7a7770;
+  --pico-h6-color: #8a8780;
+
+  /* Selection color using sage */
+  --pico-text-selection-color: rgba(116, 132, 105, 0.25);
+
+  /* Switch colors */
+  --pico-switch-background-color: #d4d1c4;
+  --pico-switch-checked-background-color: #748469;
+
+  /* Progress colors */
+  --pico-progress-background-color: #e8e5d8;
+  --pico-progress-color: #748469;
+
+  /* Valid/Invalid colors using warmer tones */
+  --pico-form-element-valid-border-color: #6b8a5a;
+  --pico-form-element-valid-active-border-color: #5a7249;
+  --pico-form-element-valid-focus-color: #5a7249;
+  --pico-ins-color: #6b8a5a;
+
+  --pico-form-element-invalid-border-color: #c17b6b;
+  --pico-form-element-invalid-active-border-color: #b86b5a;
+  --pico-form-element-invalid-focus-color: #b86b5a;
+  --pico-del-color: #c17b6b;
+
+  /* Use Geist font family */
+  --pico-font-family: var(--font-geist-sans), system-ui, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif,
+    var(--pico-font-family-emoji);
 }
 
+/* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    /* Dark sage backgrounds */
+    --pico-background-color: #2a2f26;
+    --pico-card-background-color: #343a30;
+    --pico-card-sectioning-background-color: #3a413a;
+
+    /* Lighter sage for primary in dark mode */
+    --pico-primary: #abb290;
+    --pico-primary-background: #748469;
+    --pico-primary-border: #748469;
+    --pico-primary-hover: #c4d0a8;
+    --pico-primary-hover-background: #8a9b79;
+    --pico-primary-hover-border: #8a9b79;
+
+    /* Muted sage for secondary */
+    --pico-secondary: #8a9078;
+    --pico-secondary-background: #6b7660;
+    --pico-secondary-border: #6b7660;
+
+    /* Warm light text on dark backgrounds */
+    --pico-color: #e8e5d8;
+    --pico-muted-color: #c4c1b4;
+    --pico-h1-color: #f6f6ee;
+    --pico-h2-color: #e8e5d8;
+    --pico-h3-color: #d4d1c4;
+
+    /* Dark form elements */
+    --pico-form-element-background-color: #3a413a;
+    --pico-form-element-active-background-color: #434a43;
+    --pico-form-element-border-color: #4a524a;
+    --pico-form-element-color: #e8e5d8;
+
+    /* Dark borders */
+    --pico-muted-border-color: #4a524a;
+    --pico-card-border-color: #434a43;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+[data-theme="dark"] {
+  /* Same dark mode colors as above but explicit */
+  --pico-background-color: #2a2f26;
+  --pico-card-background-color: #343a30;
+  --pico-card-sectioning-background-color: #3a413a;
+
+  --pico-primary: #abb290;
+  --pico-primary-background: #748469;
+  --pico-primary-border: #748469;
+  --pico-primary-hover: #c4d0a8;
+  --pico-primary-hover-background: #8a9b79;
+  --pico-primary-hover-border: #8a9b79;
+
+  --pico-color: #e8e5d8;
+  --pico-muted-color: #c4c1b4;
+  --pico-h1-color: #f6f6ee;
+  --pico-h2-color: #e8e5d8;
+  --pico-h3-color: #d4d1c4;
+
+  --pico-form-element-background-color: #3a413a;
+  --pico-form-element-active-background-color: #434a43;
+  --pico-form-element-border-color: #4a524a;
+  --pico-form-element-color: #e8e5d8;
+
+  --pico-muted-border-color: #4a524a;
+  --pico-card-border-color: #434a43;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Custom utility classes for your rental site */
+.rental-card {
+  background-color: var(--pico-card-background-color);
+  border: 1px solid var(--pico-card-border-color);
+  border-radius: var(--pico-border-radius);
+  padding: var(--pico-spacing);
+  margin-bottom: var(--pico-spacing);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.rental-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(116, 132, 105, 0.1);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.rental-price {
+  color: var(--pico-primary);
+  font-weight: 600;
+  font-size: 1.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.rental-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.rental-feature {
+  background-color: #aac1b1;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: calc(var(--pico-border-radius) * 0.5);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #f6f6ee 0%, #f9ead7 100%);
+  padding: calc(var(--pico-spacing) * 3) var(--pico-spacing);
+  border-radius: var(--pico-border-radius);
+  margin-bottom: calc(var(--pico-spacing) * 2);
+}
+
+.owner-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--pico-card-background-color);
+  border-radius: var(--pico-border-radius);
+  border: 1px solid var(--pico-card-border-color);
+}
+
+.owner-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid var(--pico-primary);
+}
+
+.response-time {
+  color: var(--pico-muted-color);
+  font-size: 0.875rem;
+}
+
+/* Image gallery styles */
+.image-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+  border-radius: var(--pico-border-radius);
+  overflow: hidden;
+  height: 400px;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-gallery img:first-child {
+  grid-row: 1 / -1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .image-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: 250px repeat(2, 150px);
+    height: auto;
   }
+
+  .image-gallery img:first-child {
+    grid-row: 1;
+  }
+
+  .rental-features {
+    justify-content: center;
+  }
+
+  .owner-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f6f6ee 25%, #f9ead7 50%, #f6f6ee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Fix article header/footer styling for rental cards */
+article > header {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  border-top-right-radius: var(--pico-border-radius) !important;
+  border-top-left-radius: var(--pico-border-radius) !important;
+}
+
+article > footer {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  margin-top: var(--pico-spacing) !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-top: none !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
