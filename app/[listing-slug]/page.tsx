@@ -2,15 +2,14 @@ import { notFound } from "next/navigation";
 import listingsData from "@/lib/data/listings.json";
 
 interface ListingPageProps {
-  params: {
+  params: Promise<{
     "listing-slug": string;
-  };
+  }>;
 }
 
-export default function ListingPage({ params }: ListingPageProps) {
-  const listing = listingsData.listings.find(
-    (l) => l.slug === params["listing-slug"],
-  );
+export default async function ListingPage({ params }: ListingPageProps) {
+  const { "listing-slug": slug } = await params;
+  const listing = listingsData.listings.find((l) => l.slug === slug);
 
   if (!listing) {
     notFound();
