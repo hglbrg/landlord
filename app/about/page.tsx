@@ -172,7 +172,7 @@ export default function AboutPage() {
 
       {/* What to Expect */}
       <section>
-        <h2>{strings.about.whatToExpected}</h2>
+        <h2>{strings.about.whatToExpect}</h2>
 
         <div className="grid">
           {primaryAgent.workDetails.specialties && (
