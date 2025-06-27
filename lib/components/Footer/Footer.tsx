@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "./Footer.module.css";
 
 interface FooterProps {
   ownerName?: string;
@@ -12,69 +13,50 @@ export default function Footer({
   ownerPhone = "+46 70 123 45 67",
 }: FooterProps) {
   return (
-    <footer
-      style={{
-        backgroundColor: "var(--pico-primary)",
-        color: "var(--pico-primary-inverse)",
-      }}
-    >
-      <div className="container-fluid" data-theme="dark">
-        <div className="grid">
-          <div>
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.footerContent}>
+          <div className={styles.footerSection}>
             <h6>Kontakt</h6>
-            <p>
+            <div className={styles.contactInfo}>
               <strong>{ownerName}</strong>
-              <br />
-              <small>
-                <a
-                  href={`mailto:${ownerEmail}`}
-                  style={{ color: "var(--pico-primary-inverse)" }}
-                >
+              <div className={styles.contactLinks}>
+                <a href={`mailto:${ownerEmail}`} className={styles.contactLink}>
                   {ownerEmail}
                 </a>
-                <br />
-                <a
-                  href={`tel:${ownerPhone}`}
-                  style={{ color: "var(--pico-primary-inverse)" }}
-                >
+                <a href={`tel:${ownerPhone}`} className={styles.contactLink}>
                   {ownerPhone}
                 </a>
-              </small>
-            </p>
+              </div>
+            </div>
           </div>
-          <div>
+
+          <div className={styles.footerSection}>
             <h6>Navigation</h6>
-            <ul style={{ listStyle: "none", padding: 0 }}>
-              <li>
-                <Link href="/" style={{ color: "var(--pico-primary-inverse)" }}>
-                  Lediga lägenheter
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  style={{ color: "var(--pico-primary-inverse)" }}
-                >
-                  Om mig
-                </Link>
-              </li>
-            </ul>
+            <nav className={styles.footerNav}>
+              <Link href="/" className={styles.footerLink}>
+                Hem
+              </Link>
+              <Link href="/ledigt" className={styles.footerLink}>
+                Lediga lägenheter
+              </Link>
+              <Link href="/om-mig" className={styles.footerLink}>
+                Om mig
+              </Link>
+            </nav>
           </div>
-          <div>
+
+          <div className={styles.footerSection}>
             <h6>Information</h6>
-            <p>
-              <small>
-                Privatperson som hyr ut lägenheter
-                <br />
-                i Söderköping med omnejd.
-                <br />
-                Svarar oftast inom 2 timmar.
-              </small>
+            <p className={styles.footerText}>
+              Privatperson som hyr ut lägenheter i Söderköping med omnejd.
+              <br />
+              Svarar oftast inom 2 timmar.
             </p>
           </div>
         </div>
-        <hr style={{ borderColor: "rgba(255, 255, 255, 0.2)" }} />
-        <div style={{ textAlign: "center" }}>
+
+        <div className={styles.footerBottom}>
           <small>
             © {new Date().getFullYear()} {ownerName}. Alla rättigheter
             förbehållna.

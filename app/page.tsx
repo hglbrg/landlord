@@ -103,19 +103,27 @@ export default function HomePage() {
 
                 return (
                   <article key={listing.id} className="rental-card">
-                    <header>
-                      <div
-                        className="image-gallery"
-                        style={{ height: "200px" }}
-                      >
-                        <Image
-                          src={listing.images[0]?.url || ""}
-                          alt={listing.images[0]?.alt || listing.basic.title}
-                          fill
-                          style={{ objectFit: "cover" }}
-                        />
-                      </div>
-                    </header>
+                    <div>
+                      <Link href={`/ledigt/${listing.slug}`}>
+                        <div
+                          style={{
+                            position: "relative",
+                            height: "200px",
+                            borderRadius: "var(--pico-border-radius)",
+                            overflow: "hidden",
+                            display: "block",
+                          }}
+                        >
+                          <Image
+                            src={listing.images[0]?.url || ""}
+                            alt={listing.images[0]?.alt || listing.basic.title}
+                            fill
+                            style={{ objectFit: "cover" }}
+                            sizes="(max-width: 768px) 100vw, 300px"
+                          />
+                        </div>
+                      </Link>
+                    </div>
 
                     <h3>{listing.basic.title}</h3>
                     <p>{listing.basic.shortDescription}</p>
