@@ -1,0 +1,271 @@
+/* Map.module.css */
+
+.mapContainer {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map {
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.mapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.mapContainer:hover .mapOverlay {
+  opacity: 1;
+}
+
+.expandText {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.mapPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 8px;
+  color: #666;
+}
+
+.loadingText {
+  font-size: 14px;
+}
+
+/* Full-screen dialog styles */
+.mapDialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapDialog::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dialogContent {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.dialogHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.googleMapsButton {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.googleMapsButton:hover {
+  background: #3367d6;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.dialogMap {
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure Leaflet controls are properly positioned */
+.dialogMap :global(.leaflet-container) {
+  font-family: inherit;
+}
+
+.dialogMap :global(.leaflet-control-zoom) {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.dialogMap :global(.leaflet-control-scale) {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.dialogMap :global(.leaflet-control-custom) {
+  margin-left: 10px;
+  margin-top: 50px;
+}
+
+/* Enhanced popup styles */
+.dialogMap :global(.leaflet-popup-content-wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dialogMap :global(.leaflet-popup-content) {
+  margin: 12px 16px;
+  line-height: 1.4;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .dialogHeader {
+    padding: 12px 16px;
+  }
+
+  .dialogHeader h3 {
+    font-size: 16px;
+  }
+
+  .googleMapsButton {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .headerControls {
+    gap: 8px;
+  }
+
+  .closeButton {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .expandText {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .mapDialog :global(.leaflet-container) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Focus styles for accessibility */
+.closeButton:focus,
+.googleMapsButton:focus {
+  outline: 2px solid #4285f4;
+  outline-offset: 2px;
+}
+
+/* Loading state improvements */
+.mapPlaceholder {
+  position: relative;
+}
+
+.mapPlaceholder::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #e0e0e0;
+  border-top-color: #666;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+}

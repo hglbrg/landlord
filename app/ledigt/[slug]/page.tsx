@@ -2,22 +2,17 @@ import Link from "next/link";
 import ListingDetailClient from "./ListingDetailClient";
 import { Listing, Agent } from "@/lib/types/listing";
 import styles from "./page.module.css";
-
-// Import data files
 import listingsData from "@/lib/data/listings.json";
 import agentsData from "@/lib/data/agents.json";
 import strings from "@/lib/data/strings.json";
 
-// This would normally use params from Next.js
 export default async function ListingDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // Await params in Next.js 15
   const { slug } = await params;
 
-  // Find the listing by slug
   const listing = (listingsData as { listings: Listing[] }).listings.find(
     (l) => l.slug === slug,
   );

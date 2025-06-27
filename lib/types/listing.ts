@@ -57,12 +57,7 @@ export interface Listing {
     rentAmount: number;
     currency: string;
   };
-  location: {
-    streetAddress: string;
-    city: string;
-    area: string;
-    postalCode: string;
-  };
+  location: Location;
   rental: {
     availableFrom: string;
     minimumRentalPeriod: number;
@@ -79,6 +74,7 @@ export interface Listing {
   features: Features;
   amenities: Amenities;
   images: Image[];
+  floorPlanImages: Image[];
   transport: Transport[];
   nearbyAmenities: NearbyAmenity[];
 }
