@@ -1,12 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface HeaderProps {
-  ownerName?: string;
+  ownerName: string;
 }
 
-export default function Header({ ownerName = "Anna Svensson" }: HeaderProps) {
+export default function Header({ ownerName }: HeaderProps) {
   return (
-    <header className="container-fluid">
+    <header className="container">
       <nav>
         <ul>
           <li>
@@ -19,23 +20,20 @@ export default function Header({ ownerName = "Anna Svensson" }: HeaderProps) {
                 textDecoration: "none",
               }}
             >
-              <img
-                src="/icon-192.png"
-                alt="Logo"
-                width="24"
-                height="24"
-                style={{ display: "block" }}
-              />
-              <strong>{ownerName} Fastigheter</strong>
+              <Image src="/icon-192.png" alt="Logo" width={32} height={32} />
+              <strong>{ownerName}</strong>
             </Link>
           </li>
         </ul>
         <ul>
           <li>
+            <Link href="/">Hem</Link>
+          </li>
+          <li>
             <Link href="/ledigt">Lediga lägenheter</Link>
           </li>
           <li>
-            <Link href="/about">Om mig</Link>
+            <Link href="/om-mig">Om mig</Link>
           </li>
         </ul>
       </nav>

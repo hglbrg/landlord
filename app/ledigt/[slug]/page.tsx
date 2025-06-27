@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { getFeatures, getAmenities } from "@/lib/utils/get-features";
+import { FeatureList } from "@/lib/utils/get-features";
 import styles from "./page.module.css";
 
 // Import data files
@@ -23,6 +23,9 @@ export default function ListingDetailPage({
   const assignedAgent = agentsData.agents.find(
     (agent) => agent.id === listing?.assignedAgent,
   );
+
+  // TODO: Remove this when params is actually used
+  console.log("Params:", params);
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [formData, setFormData] = useState({
@@ -183,22 +186,10 @@ export default function ListingDetailPage({
 
               <article>
                 <h4>{strings.common.features}</h4>
-                <div className="rental-features">
-                  {getFeatures(listing.features).map((feature) => (
-                    <span key={feature.key} className="rental-feature">
-                      {feature.label}
-                    </span>
-                  ))}
-                </div>
+                <FeatureList features={listing.features} type="features" />
 
                 <h4>{strings.common.amenities}</h4>
-                <div className="rental-features">
-                  {getAmenities(listing.amenities).map((amenity) => (
-                    <span key={amenity.key} className="rental-feature">
-                      {amenity.label}
-                    </span>
-                  ))}
-                </div>
+                <FeatureList amenities={listing.amenities} type="amenities" />
               </article>
             </div>
           </section>
