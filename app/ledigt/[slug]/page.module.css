@@ -1,0 +1,69 @@
+.mainGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.imageGallery {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.thumbnailButton {
+  padding: 0;
+  border: none;
+  border-radius: var(--pico-border-radius);
+  background: none;
+  cursor: pointer;
+}
+
+.thumbnailButton.selected {
+  border: 2px solid var(--pico-primary);
+}
+
+.thumbnailImage {
+  object-fit: cover;
+  border-radius: var(--pico-border-radius);
+}
+
+.priceAndSpecs {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mainImage {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--pico-border-radius);
+}
+
+.descriptionText {
+  white-space: pre-line;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .specsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .priceAndSpecs {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

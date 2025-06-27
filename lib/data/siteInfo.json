@@ -1,0 +1,30 @@
+{
+  "site": {
+    "name": "Anna Svensson Fastigheter",
+    "description": "Privatperson som hyr ut lägenheter i Söderköping med omnejd",
+    "url": "https://annasvensson.se",
+    "type": "private_landlord",
+    "primaryAgentId": "anna-svensson"
+  },
+  "company": {
+    "name": null,
+    "type": "private",
+    "organizationNumber": null,
+    "address": null
+  },
+  "contact": {
+    "primaryEmail": "anna.svensson@email.com",
+    "primaryPhone": "+46701234567",
+    "address": "Söderköping, Sverige"
+  },
+  "settings": {
+    "defaultLanguage": "sv-SE",
+    "currency": "SEK",
+    "timezone": "Europe/Stockholm",
+    "showPricesWithVAT": false
+  },
+  "metadata": {
+    "lastUpdated": "2025-06-27T10:00:00Z",
+    "version": "1.0"
+  }
+}

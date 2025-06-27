@@ -1,184 +1,270 @@
 import Link from "next/link";
-import listingsData from "@/lib/data/listings.json";
+import Image from "next/image";
+import { FeatureTags } from "@/lib/utils/get-features";
+import styles from "./page.module.css";
 
-export default function LedigaLägenheter() {
+// Import data files
+import listingsData from "@/lib/data/listings.json";
+import agentsData from "@/lib/data/agents.json";
+import siteInfoData from "@/lib/data/siteInfo.json";
+import strings from "@/lib/data/strings.json";
+
+export default function ListingsPage() {
+  const primaryAgent = agentsData.agents.find(
+    (agent) => agent.id === siteInfoData.site.primaryAgentId,
+  );
   const availableListings = listingsData.listings.filter(
     (listing) => listing.status === "available",
   );
 
   return (
     <div className="container">
+      {/* Header */}
       <section>
         <hgroup>
-          <h1>Lediga lägenheter</h1>
-          <p>
-            Här hittar du alla våra lediga lägenheter i Söderköping med omnejd.
-          </p>
+          <h1>{strings.listings.title}</h1>
+          <p>{strings.listings.subtitle}</p>
         </hgroup>
       </section>
 
-      {availableListings.length === 0 ? (
-        <article>
-          <p>Inga lediga lägenheter just nu. Kom tillbaka senare!</p>
-        </article>
-      ) : (
-        <div className="grid">
-          {availableListings.map((listing) => (
-            <article key={listing.id}>
-              {/* Header with image only */}
+      {/* Main Content Grid */}
+      <div className={`grid ${styles.listingsGrid}`}>
+        {/* Listings */}
+        <div className={styles.listingsMain}>
+          {availableListings.length > 0 ? (
+            <>
+              {availableListings.map((listing) => {
+                const assignedAgent = agentsData.agents.find(
+                  (agent) => agent.id === listing.assignedAgent,
+                );
+
+                return (
+                  <article key={listing.id} className="rental-card">
+                    <div className={styles.listingCardGrid}>
+                      {/* Image */}
+                      <div>
+                        <Link href={`/ledigt/${listing.slug}`}>
+                          <div className={styles.imageContainer}>
+                            <Image
+                              src={listing.images[0]?.url || ""}
+                              alt={
+                                listing.images[0]?.alt || listing.basic.title
+                              }
+                              fill
+                              style={{ objectFit: "cover" }}
+                            />
+                          </div>
+                        </Link>
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        <header>
+                          <h3 style={{ margin: "0 0 0.5rem 0" }}>
+                            <Link
+                              href={`/ledigt/${listing.slug}`}
+                              style={{ textDecoration: "none" }}
+                            >
+                              {listing.basic.title}
+                            </Link>
+                          </h3>
+                          <div className={styles.priceAndLocation}>
+                            <span className="rental-price">
+                              {listing.specifications.rentAmount.toLocaleString(
+                                "sv-SE",
+                              )}{" "}
+                              kr/{strings.common.monthShort}
+                            </span>
+                            <small style={{ color: "var(--pico-muted-color)" }}>
+                              {listing.location.streetAddress},{" "}
+                              {listing.location.city}
+                            </small>
+                          </div>
+                        </header>
+
+                        <p style={{ margin: "0 0 1rem 0" }}>
+                          {listing.basic.shortDescription}
+                        </p>
+
+                        {/* Specs */}
+                        <div className={styles.specsContainer}>
+                          <span>
+                            {listing.specifications.rooms}{" "}
+                            {strings.common.rooms}
+                          </span>
+                          <span>•</span>
+                          <span>{listing.specifications.sizeSqm} m²</span>
+                          <span>•</span>
+                          <span>
+                            {strings.listing.floor}{" "}
+                            {listing.specifications.floor}
+                          </span>
+                        </div>
+
+                        {/* Features */}
+                        <FeatureTags
+                          features={listing.features}
+                          amenities={listing.amenities}
+                          maxVisible={5}
+                        />
+
+                        {/* Availability */}
+                        <div className={styles.availabilityContainer}>
+                          <small style={{ color: "var(--pico-muted-color)" }}>
+                            {strings.common.availableFrom}:{" "}
+                            {new Date(
+                              listing.rental.availableFrom,
+                            ).toLocaleDateString("sv-SE")}
+                          </small>
+                          <Link
+                            href={`/ledigt/${listing.slug}`}
+                            role="button"
+                            className="outline"
+                          >
+                            {strings.common.viewApartment}
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </>
+          ) : (
+            <article>
+              <p>{strings.listings.noApartments}</p>
+            </article>
+          )}
+        </div>
+
+        {/* Sidebar */}
+        <aside>
+          {/* About Landlord */}
+          {primaryAgent && (
+            <article>
               <header>
-                {listing.images.length > 0 && (
-                  <img
-                    src={
-                      listing.images.find((img) => img.isMain)?.url ||
-                      listing.images[0].url
-                    }
-                    alt={
-                      listing.images.find((img) => img.isMain)?.alt ||
-                      listing.images[0].alt
-                    }
-                    loading="lazy"
-                  />
-                )}
+                <h4>{strings.listings.aboutLandlord}</h4>
               </header>
 
-              {/* Main content starts with hgroup */}
-              <hgroup>
-                <h3>
-                  <Link href={`/${listing.slug}`}>{listing.basic.title}</Link>
-                </h3>
-                <p>{listing.basic.shortDescription}</p>
-              </hgroup>
-
-              {/* Key details */}
-              <dl>
-                <dt>Hyra</dt>
-                <dd className="rental-price">
-                  {listing.specifications.rentAmount.toLocaleString("sv-SE")}{" "}
-                  {listing.specifications.currency}/mån
-                </dd>
-
-                <dt>Storlek</dt>
-                <dd>{listing.specifications.sizeSqm} m²</dd>
-
-                <dt>Rum</dt>
-                <dd>
-                  {listing.specifications.rooms} rum,{" "}
-                  {listing.specifications.bedrooms} sovrum
-                </dd>
-
-                <dt>Läge</dt>
-                <dd>
-                  {listing.location.area}, {listing.location.city}
-                </dd>
-              </dl>
-
-              {/* Features */}
-              <div className="rental-features">
-                {listing.features.balcony.has && (
-                  <span className="rental-feature">Balkong</span>
-                )}
-                {listing.features.petsAllowed && (
-                  <span className="rental-feature">Djur OK</span>
-                )}
-                {listing.features.parking && (
-                  <span className="rental-feature">Parkering</span>
-                )}
-                {listing.amenities.laundryRoom && (
-                  <span className="rental-feature">Tvättstuga</span>
-                )}
-                {listing.amenities.fiberInternet && (
-                  <span className="rental-feature">Fiber</span>
-                )}
-                {listing.features.elevator && (
-                  <span className="rental-feature">Hiss</span>
-                )}
+              <div
+                className="owner-profile"
+                style={{
+                  padding: "1rem",
+                  border: "none",
+                  background: "transparent",
+                }}
+              >
+                <Image
+                  src={primaryAgent.personal.avatar}
+                  alt={primaryAgent.personal.fullName}
+                  width={48}
+                  height={48}
+                  className="owner-avatar"
+                />
+                <div>
+                  <h5 style={{ margin: 0 }}>
+                    {primaryAgent.personal.fullName}
+                  </h5>
+                  {primaryAgent.workDetails.verified && (
+                    <small style={{ color: "var(--pico-primary)" }}>
+                      ✓ {strings.common.verified}
+                    </small>
+                  )}
+                  <p
+                    className="response-time"
+                    style={{ margin: "0.5rem 0 0 0" }}
+                  >
+                    {strings.common.responseTime.replace(
+                      "{hours}",
+                      primaryAgent.workDetails.responseTimeHours.toString(),
+                    )}
+                  </p>
+                </div>
               </div>
 
-              {/* Transport info */}
-              {listing.transport.length > 0 && (
-                <details>
-                  <summary>Transport & närhet</summary>
-                  <ul>
-                    {listing.transport.map((transport, index) => (
-                      <li key={index}>
-                        <strong>{transport.stationName}</strong> (
-                        {transport.type}) - {transport.walkingMinutes} min
-                      </li>
-                    ))}
-                    {listing.nearbyAmenities
-                      .slice(0, 2)
-                      .map((amenity, index) => (
-                        <li key={`amenity-${index}`}>
-                          <strong>{amenity.name}</strong> -{" "}
-                          {amenity.walkingMinutes} min
-                        </li>
-                      ))}
-                  </ul>
-                </details>
-              )}
+              <p style={{ fontSize: "0.9rem", margin: "1rem 0" }}>
+                {primaryAgent.personal.bio}
+              </p>
 
               <footer>
-                <p>
-                  <small>
-                    Tillgänglig från{" "}
-                    {new Date(listing.rental.availableFrom).toLocaleDateString(
-                      "sv-SE",
-                    )}
-                    {listing.rental.depositMonths && (
-                      <> • Deposit: {listing.rental.depositMonths} månader</>
-                    )}
-                  </small>
-                </p>
-                <Link href={`/${listing.slug}`} role="button">
-                  Visa lägenhet
+                <Link href="/om-mig" role="button" className="outline">
+                  Läs mer om mig
                 </Link>
               </footer>
             </article>
-          ))}
-        </div>
-      )}
+          )}
 
-      {/* Owner info section */}
-      <section>
-        <article>
-          <header>
-            <h2>Om hyresvärden</h2>
-          </header>
+          {/* Contact */}
+          {primaryAgent && (
+            <article>
+              <header>
+                <h4>{strings.listings.contactMe}</h4>
+              </header>
 
-          <div className="owner-profile">
-            <img
-              src={listingsData.siteInfo.owner.avatar}
-              alt={`${listingsData.siteInfo.owner.firstName} ${listingsData.siteInfo.owner.lastName}`}
-              className="owner-avatar"
-              width="60"
-              height="60"
-            />
-            <div>
-              <h4>
-                {listingsData.siteInfo.owner.firstName}{" "}
-                {listingsData.siteInfo.owner.lastName}
-              </h4>
-              <p>{listingsData.siteInfo.owner.bio}</p>
-              <p className="response-time">
-                Svarar oftast inom{" "}
-                {listingsData.siteInfo.owner.responseTimeHours} timmar
-                {listingsData.siteInfo.owner.verified && <> • ✓ Verifierad</>}
-              </p>
-            </div>
-          </div>
+              <dl>
+                <dt>{strings.listing.email}</dt>
+                <dd>
+                  <a href={`mailto:${primaryAgent.personal.email}`}>
+                    {primaryAgent.personal.email}
+                  </a>
+                </dd>
 
-          <p>
-            <a
-              href={`mailto:${listingsData.siteInfo.owner.email}`}
-              role="button"
-              className="outline"
-            >
-              Kontakta mig
-            </a>
-          </p>
-        </article>
-      </section>
+                <dt>{strings.listing.phone}</dt>
+                <dd>
+                  <a href={`tel:${primaryAgent.personal.phone}`}>
+                    {primaryAgent.personal.phone}
+                  </a>
+                </dd>
+              </dl>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <a href={`mailto:${primaryAgent.personal.email}`} role="button">
+                  {strings.common.sendMessage}
+                </a>
+                <a
+                  href={`tel:${primaryAgent.personal.phone}`}
+                  role="button"
+                  className="secondary"
+                >
+                  Ring mig
+                </a>
+              </div>
+            </article>
+          )}
+
+          {/* Transport & Nearby Info */}
+          <article>
+            <header>
+              <h4>{strings.listings.transportAndNearby}</h4>
+            </header>
+
+            <p style={{ fontSize: "0.9rem" }}>
+              Alla våra lägenheter har utmärkt kollektivtrafikförbindelser och
+              ligger nära butiker, restauranger och grönområden.
+            </p>
+
+            <details>
+              <summary>Områden vi verkar i</summary>
+              <ul>
+                <li>
+                  <strong>Söderköping centrum</strong> - Nära Göta kanal och
+                  historiska centrum
+                </li>
+                <li>
+                  <strong>Stockholm Södermalm</strong> - Urbant boende med
+                  närhet till city
+                </li>
+              </ul>
+            </details>
+          </article>
+        </aside>
+      </div>
     </div>
   );
 }

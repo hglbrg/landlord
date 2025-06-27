@@ -1,0 +1,188 @@
+{
+  "agents": [
+    {
+      "id": "anna-svensson",
+      "slug": "anna-svensson",
+      "isPrimary": true,
+      "isOwner": true,
+      "personal": {
+        "firstName": "Anna",
+        "lastName": "Svensson",
+        "fullName": "Anna Svensson",
+        "title": "Huvudansvarig & Ägare",
+        "email": "anna.svensson@email.com",
+        "phone": "+46701234567",
+        "avatar": "/anna-avatar.png",
+        "bio": "Privatperson som hyr ut lägenheter i Söderköping med omnejd. Svarar oftast inom 2 timmar och erbjuder personlig service för alla mina hyresgäster.",
+        "languages": ["Svenska", "Engelska"],
+        "yearsExperience": 8
+      },
+      "workDetails": {
+        "responseTimeHours": 2,
+        "verified": true,
+        "specialties": [
+          "Historiska fastigheter",
+          "Centrala lägen",
+          "Långtidsuthyrning"
+        ],
+        "workingHours": {
+          "monday": { "start": "08:00", "end": "18:00" },
+          "tuesday": { "start": "08:00", "end": "18:00" },
+          "wednesday": { "start": "08:00", "end": "18:00" },
+          "thursday": { "start": "08:00", "end": "18:00" },
+          "friday": { "start": "08:00", "end": "17:00" },
+          "saturday": { "start": "10:00", "end": "15:00" },
+          "sunday": { "closed": true }
+        }
+      },
+      "coverage": {
+        "primaryAreas": ["Söderköping", "Stockholm Södermalm"],
+        "regions": ["Östergötland", "Stockholm"],
+        "travelRadius": 50
+      },
+      "statistics": {
+        "totalListings": 2,
+        "activeListings": 2,
+        "averageRating": 4.8,
+        "totalReviews": 23,
+        "successfulRentals": 47
+      },
+      "contact": {
+        "preferredContact": "phone",
+        "emergencyPhone": "+46701234567",
+        "officeAddress": null,
+        "meetingLocations": ["Söderköping centrum", "Slussen Stockholm"]
+      }
+    },
+    {
+      "id": "erik-lindqvist",
+      "slug": "erik-lindqvist",
+      "isPrimary": false,
+      "isOwner": false,
+      "personal": {
+        "firstName": "Erik",
+        "lastName": "Lindqvist",
+        "fullName": "Erik Lindqvist",
+        "title": "Områdesansvarig Norrköping",
+        "email": "erik.lindqvist@email.com",
+        "phone": "+46702345678",
+        "avatar": "/erik-avatar.png",
+        "bio": "Lokal fastighetskännare i Norrköping med bred kunskap om stadens olika områden. Hjälper gärna till med visningar och svarar snabbt på frågor.",
+        "languages": ["Svenska", "Engelska", "Tyska"],
+        "yearsExperience": 5
+      },
+      "workDetails": {
+        "responseTimeHours": 4,
+        "verified": true,
+        "specialties": [
+          "Studentbostäder",
+          "Moderna lägenheter",
+          "Norrköpings centrum"
+        ],
+        "workingHours": {
+          "monday": { "start": "09:00", "end": "17:00" },
+          "tuesday": { "start": "09:00", "end": "17:00" },
+          "wednesday": { "start": "09:00", "end": "17:00" },
+          "thursday": { "start": "09:00", "end": "17:00" },
+          "friday": { "start": "09:00", "end": "16:00" },
+          "saturday": { "closed": true },
+          "sunday": { "closed": true }
+        }
+      },
+      "coverage": {
+        "primaryAreas": [
+          "Norrköping centrum",
+          "Norrköping Öster",
+          "Norrköping Väster"
+        ],
+        "regions": ["Östergötland"],
+        "travelRadius": 25
+      },
+      "statistics": {
+        "totalListings": 0,
+        "activeListings": 0,
+        "averageRating": 4.6,
+        "totalReviews": 12,
+        "successfulRentals": 18
+      },
+      "contact": {
+        "preferredContact": "email",
+        "emergencyPhone": "+46701234567",
+        "officeAddress": "Drottninggatan 15, 602 24 Norrköping",
+        "meetingLocations": [
+          "Norrköping centrum",
+          "Linköpings universitet Campus Norrköping"
+        ]
+      }
+    },
+    {
+      "id": "maria-johansson",
+      "slug": "maria-johansson",
+      "isPrimary": false,
+      "isOwner": false,
+      "personal": {
+        "firstName": "Maria",
+        "lastName": "Johansson",
+        "fullName": "Maria Johansson",
+        "title": "Områdesansvarig Linköping",
+        "email": "maria.johansson@email.com",
+        "phone": "+46703456789",
+        "avatar": "/maria-avatar.png",
+        "bio": "Specialist på studentbostäder och moderna lägenheter i Linköping. Med närhet till universitetet och god kunskap om studenternas behov.",
+        "languages": ["Svenska", "Engelska", "Spanska"],
+        "yearsExperience": 3
+      },
+      "workDetails": {
+        "responseTimeHours": 6,
+        "verified": true,
+        "specialties": [
+          "Studentbostäder",
+          "Universitetsområdet",
+          "Kollektivtrafik"
+        ],
+        "workingHours": {
+          "monday": { "start": "08:30", "end": "17:30" },
+          "tuesday": { "start": "08:30", "end": "17:30" },
+          "wednesday": { "start": "08:30", "end": "17:30" },
+          "thursday": { "start": "08:30", "end": "17:30" },
+          "friday": { "start": "08:30", "end": "16:30" },
+          "saturday": { "start": "10:00", "end": "14:00" },
+          "sunday": { "closed": true }
+        }
+      },
+      "coverage": {
+        "primaryAreas": [
+          "Linköping centrum",
+          "Universitetsområdet",
+          "Ryd",
+          "Lambohov"
+        ],
+        "regions": ["Östergötland"],
+        "travelRadius": 20
+      },
+      "statistics": {
+        "totalListings": 0,
+        "activeListings": 0,
+        "averageRating": 4.9,
+        "totalReviews": 8,
+        "successfulRentals": 12
+      },
+      "contact": {
+        "preferredContact": "email",
+        "emergencyPhone": "+46701234567",
+        "officeAddress": null,
+        "meetingLocations": [
+          "Linköping centrum",
+          "Linköpings universitet",
+          "Ryd centrum"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-06-27T10:00:00Z",
+    "totalAgents": 3,
+    "activeAgents": 3,
+    "version": "1.0"
+  }
+}

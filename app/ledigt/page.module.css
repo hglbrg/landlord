@@ -1,0 +1,57 @@
+.listingsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.listingsMain {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.listingCardGrid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.imageContainer {
+  position: relative;
+  height: 200px;
+  border-radius: var(--pico-border-radius);
+  overflow: hidden;
+}
+
+.specsContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: var(--pico-muted-color);
+  font-size: 0.9rem;
+}
+
+.availabilityContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceAndLocation {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .listingsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .listingCardGrid {
+    grid-template-columns: 1fr;
+  }
+}

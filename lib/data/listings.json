@@ -1,25 +1,4 @@
 {
-  "siteInfo": {
-    "owner": {
-      "firstName": "Anna",
-      "lastName": "Svensson",
-      "email": "anna.svensson@email.com",
-      "phone": "+46701234567",
-      "avatar": "/anna-avatar.png",
-      "bio": "Privatperson som hyr ut lägenheter i Söderköping med omnejd. Svarar oftast inom 2 timmar.",
-      "responseTimeHours": 2,
-      "verified": true
-    },
-    "company": {
-      "name": null,
-      "type": "private"
-    },
-    "contact": {
-      "email": "anna.svensson@email.com",
-      "phone": "+46701234567",
-      "address": "Söderköping, Sverige"
-    }
-  },
   "listings": [
     {
       "id": "soder-001",
@@ -57,11 +36,7 @@
       },
 
       "features": {
-        "balcony": {
-          "has": true,
-          "direction": "söderläge",
-          "description": "Charmig balkong med morgonsol"
-        },
+        "balcony": true,
         "garden": false,
         "parking": false,
         "elevator": false,
@@ -94,7 +69,9 @@
         "lastRenovated": 2020,
         "bathroomRenovated": 2022,
         "kitchenRenovated": 2020,
-        "condition": "excellent"
+        "condition": "excellent",
+        "balconyDirection": "söderläge",
+        "balconyDescription": "Charmig balkong med morgonsol"
       },
 
       "images": [
@@ -176,6 +153,8 @@
         }
       ],
 
+      "assignedAgent": "anna-svensson",
+
       "meta": {
         "createdAt": "2025-06-26T10:00:00Z",
         "updatedAt": "2025-06-26T10:00:00Z",
@@ -221,9 +200,7 @@
       },
 
       "features": {
-        "balcony": {
-          "has": false
-        },
+        "balcony": false,
         "garden": false,
         "parking": true,
         "elevator": false,
@@ -299,6 +276,8 @@
           "description": "Historiska kanalen med slussar"
         }
       ],
+
+      "assignedAgent": "anna-svensson",
 
       "meta": {
         "createdAt": "2025-06-26T11:00:00Z",
