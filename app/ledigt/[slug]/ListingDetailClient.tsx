@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FeatureList } from "@/lib/utils/get-features";
+import { DetailedFeatureList } from "@/lib/utils/get-features";
 import { Listing, Agent } from "@/lib/types/listing";
 import styles from "./page.module.css";
 import strings from "@/lib/data/strings.json";
@@ -120,11 +120,11 @@ export default function ListingDetailClient({
             </article>
 
             <article>
-              <h4>{strings.common.features}</h4>
-              <FeatureList features={listing.features} type="features" />
-
-              <h4>{strings.common.amenities}</h4>
-              <FeatureList amenities={listing.amenities} type="amenities" />
+              <h4>Egenskaper & Bekvämligheter</h4>
+              <DetailedFeatureList
+                features={listing.features}
+                amenities={listing.amenities}
+              />
             </article>
           </div>
         </section>

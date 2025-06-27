@@ -85,7 +85,7 @@ interface FeatureListProps {
 export function FeatureList({
   features,
   amenities,
-  showOnlyPositive = false,
+  showOnlyPositive = true, // Default to only show positive features
   className = "",
   type = "both",
 }: FeatureListProps) {
@@ -103,8 +103,23 @@ export function FeatureList({
     ? itemsToShow.filter((f) => f.value === true)
     : itemsToShow;
 
+  if (filteredFeatures.length === 0) {
+    return (
+      <p style={{ color: "var(--pico-muted-color)", fontStyle: "italic" }}>
+        Inga tillgängliga egenskaper
+      </p>
+    );
+  }
+
   return (
-    <div className={className}>
+    <div
+      className={className}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+        gap: "0.5rem",
+      }}
+    >
       {filteredFeatures.map((feature) => (
         <div
           key={feature.key}
@@ -112,17 +127,28 @@ export function FeatureList({
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
-            marginBottom: "0.5rem",
+            padding: "0.5rem",
+            backgroundColor:
+              feature.status === "yes"
+                ? "var(--pico-primary-background)"
+                : "var(--pico-del-background)",
+            borderRadius: "var(--pico-border-radius)",
+            border: `1px solid ${feature.status === "yes" ? "var(--pico-primary)" : "var(--pico-del-color)"}`,
           }}
         >
           {feature.status === "yes" ? (
-            <Check size={16} style={{ color: "var(--pico-primary)" }} />
+            <Check
+              size={16}
+              style={{ color: "var(--pico-primary)", flexShrink: 0 }}
+            />
           ) : (
-            <X size={16} style={{ color: "var(--pico-del-color)" }} />
+            <X
+              size={16}
+              style={{ color: "var(--pico-del-color)", flexShrink: 0 }}
+            />
           )}
-          <span>
-            <strong>{feature.label}:</strong>{" "}
-            {feature.status === "yes" ? "JA" : "NEJ"}
+          <span style={{ fontSize: "0.9rem", fontWeight: "500" }}>
+            {feature.label}
           </span>
         </div>
       ))}
@@ -169,22 +195,73 @@ export function FeatureTags({
   );
 }
 
-// Hook for getting feature counts
-export function useFeatureCounts(features: Features, amenities: Amenities) {
-  const featureItems = getFeatures(features);
-  const amenityItems = getAmenities(amenities);
+// Component for detailed feature display (shows all features)
+export function DetailedFeatureList({
+  features,
+  amenities,
+  className = "",
+}: {
+  features: Features;
+  amenities: Amenities;
+  className?: string;
+}) {
+  const allFeatures = getAllFeatures(features, amenities);
 
-  const positiveFeatures = featureItems.filter((f) => f.value === true);
-  const positiveAmenities = amenityItems.filter((a) => a.value === true);
-
-  return {
-    features: featureItems,
-    amenities: amenityItems,
-    positiveFeatures,
-    positiveAmenities,
-    totalCount: featureItems.length + amenityItems.length,
-    positiveCount: positiveFeatures.length + positiveAmenities.length,
-    featureCount: featureItems.length,
-    amenityCount: amenityItems.length,
-  };
+  return (
+    <div
+      className={className}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        gap: "1rem",
+      }}
+    >
+      {allFeatures.map((feature) => (
+        <div
+          key={feature.key}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0.75rem",
+            backgroundColor: "var(--pico-card-background-color)",
+            borderRadius: "var(--pico-border-radius)",
+            border: "1px solid var(--pico-muted-border-color)",
+          }}
+        >
+          <span style={{ fontWeight: "500" }}>{feature.label}</span>
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
+          >
+            {feature.status === "yes" ? (
+              <>
+                <Check size={16} style={{ color: "var(--pico-primary)" }} />
+                <span
+                  style={{
+                    color: "var(--pico-primary)",
+                    fontWeight: "600",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Ja
+                </span>
+              </>
+            ) : (
+              <>
+                <X size={16} style={{ color: "var(--pico-muted-color)" }} />
+                <span
+                  style={{
+                    color: "var(--pico-muted-color)",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Nej
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }

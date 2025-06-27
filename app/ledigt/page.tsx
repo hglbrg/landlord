@@ -183,7 +183,7 @@ export default function ListingsPage() {
               </p>
 
               <footer>
-                <Link href="/om-mig" role="button" className="outline">
+                <Link href="/about" role="button" className="outline">
                   Läs mer om mig
                 </Link>
               </footer>

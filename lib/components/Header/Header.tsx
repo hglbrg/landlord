@@ -33,7 +33,7 @@ export default function Header({ ownerName }: HeaderProps) {
             <Link href="/ledigt">Lediga lägenheter</Link>
           </li>
           <li>
-            <Link href="/om-mig">Om mig</Link>
+            <Link href="/about">Om mig</Link>
           </li>
         </ul>
       </nav>

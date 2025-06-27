@@ -40,7 +40,7 @@ export default function Footer({
               <Link href="/ledigt" className={styles.footerLink}>
                 Lediga lägenheter
               </Link>
-              <Link href="/om-mig" className={styles.footerLink}>
+              <Link href="/about" className={styles.footerLink}>
                 Om mig
               </Link>
             </nav>

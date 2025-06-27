@@ -17,15 +17,15 @@ export default async function ListingDetailPage({
   // Await params in Next.js 15
   const { slug } = await params;
 
-  // In a real app, you'd find the listing by slug
-  // For demo, we'll use the first listing
-  const listing = (listingsData as { listings: Listing[] }).listings[0]; // This should be: listingsData.listings.find(l => l.slug === slug)
-  const assignedAgent = (agentsData as { agents: Agent[] }).agents.find(
-    (agent) => agent.id === listing?.assignedAgent,
+  // Find the listing by slug
+  const listing = (listingsData as { listings: Listing[] }).listings.find(
+    (l) => l.slug === slug,
   );
-
-  // TODO: Remove this when slug is actually used
-  console.log("Slug:", slug);
+  const assignedAgent = listing
+    ? (agentsData as { agents: Agent[] }).agents.find(
+        (agent) => agent.id === listing.assignedAgent,
+      )
+    : undefined;
 
   if (!listing) {
     return (

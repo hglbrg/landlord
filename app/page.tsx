@@ -49,7 +49,7 @@ export default function HomePage() {
                   allAvailableListings.length.toString(),
                 )}
               </Link>
-              <Link href="/om-mig" role="button" className="secondary">
+              <Link href="/about" role="button" className="secondary">
                 {strings.home.readMoreAboutMe}
               </Link>
             </div>
