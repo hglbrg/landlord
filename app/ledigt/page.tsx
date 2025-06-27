@@ -34,7 +34,8 @@ export default function ListingsPage() {
           {availableListings.length > 0 ? (
             <>
               {availableListings.map((listing) => {
-                const assignedAgent = agentsData.agents.find(
+                // Note: assignedAgent will be used for contact info in future iterations
+                const _assignedAgent = agentsData.agents.find(
                   (agent) => agent.id === listing.assignedAgent,
                 );
 
