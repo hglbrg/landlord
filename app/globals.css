@@ -1,7 +1,6 @@
-/* Frosted Fern Color Palette Override */
-[data-theme="light"],
-:root:not([data-theme="dark"]),
-:host(:not([data-theme="dark"])) {
+[data-theme='light'],
+:root:not([data-theme='dark']),
+:host(:not([data-theme='dark'])) {
   /* Primary colors - Deep sage */
   --pico-primary: #748469;
   --pico-primary-background: #748469;
@@ -73,9 +72,8 @@
   --pico-del-color: #c17b6b;
 
   /* Use Geist font family */
-  --pico-font-family: var(--font-geist-sans), system-ui, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif,
-    var(--pico-font-family-emoji);
+  --pico-font-family: var(--font-geist-sans), system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, Helvetica, Arial, 'Helvetica Neue', sans-serif, var(--pico-font-family-emoji);
 }
 
 /* Dark mode overrides */
@@ -118,7 +116,7 @@
   }
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Same dark mode colors as above but explicit */
   --pico-background-color: #2a2f26;
   --pico-card-background-color: #343a30;
