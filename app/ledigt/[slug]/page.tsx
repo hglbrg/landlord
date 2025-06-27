@@ -12,20 +12,23 @@ import agentsData from "@/lib/data/agents.json";
 import strings from "@/lib/data/strings.json";
 
 // This would normally use params from Next.js
-export default function ListingDetailPage({
+export default async function ListingDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  // In a real app, you'd find the listing by slug from params
+  // Await params in Next.js 15
+  const { slug } = await params;
+
+  // In a real app, you'd find the listing by slug
   // For demo, we'll use the first listing
-  const listing = listingsData.listings[0]; // This should be: listingsData.listings.find(l => l.slug === params.slug)
+  const listing = listingsData.listings[0]; // This should be: listingsData.listings.find(l => l.slug === slug)
   const assignedAgent = agentsData.agents.find(
     (agent) => agent.id === listing?.assignedAgent,
   );
 
-  // TODO: Remove this when params is actually used
-  console.log("Params:", params);
+  // TODO: Remove this when slug is actually used
+  console.log("Slug:", slug);
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [formData, setFormData] = useState({
