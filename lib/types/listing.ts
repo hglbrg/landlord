@@ -86,7 +86,7 @@ export interface Listing {
   features: Features
   amenities: Amenities
   images: Image[]
-  floorPlanImages: Image[]
+  floorPlanImages?: Image[]
   transport: Transport[]
   nearbyAmenities: NearbyAmenity[]
 }
