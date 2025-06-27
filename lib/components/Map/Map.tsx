@@ -125,7 +125,6 @@ export default function MapComponent({
           doubleClickZoom: true,
           keyboard: true,
           boxZoom: true,
-          tap: true,
           zoomSnap: 1,
           zoomDelta: 1,
           wheelPxPerZoomLevel: 60,
