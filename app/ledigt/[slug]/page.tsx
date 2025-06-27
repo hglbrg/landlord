@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ListingDetailClient from "./ListingDetailClient";
+import { Listing, Agent } from "@/lib/types/listing";
 import styles from "./page.module.css";
 
 // Import data files
@@ -18,8 +19,8 @@ export default async function ListingDetailPage({
 
   // In a real app, you'd find the listing by slug
   // For demo, we'll use the first listing
-  const listing = listingsData.listings[0]; // This should be: listingsData.listings.find(l => l.slug === slug)
-  const assignedAgent = agentsData.agents.find(
+  const listing = (listingsData as { listings: Listing[] }).listings[0]; // This should be: listingsData.listings.find(l => l.slug === slug)
+  const assignedAgent = (agentsData as { agents: Agent[] }).agents.find(
     (agent) => agent.id === listing?.assignedAgent,
   );
 

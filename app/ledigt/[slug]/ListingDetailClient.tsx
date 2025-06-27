@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { FeatureList } from "@/lib/utils/get-features";
+import { Listing, Agent } from "@/lib/types/listing";
 import styles from "./page.module.css";
 import strings from "@/lib/data/strings.json";
 
 interface ListingDetailClientProps {
-  listing: any;
-  assignedAgent: any;
+  listing: Listing;
+  assignedAgent: Agent | undefined;
 }
 
 export default function ListingDetailClient({
@@ -61,7 +63,7 @@ export default function ListingDetailClient({
 
           {listing.images.length > 1 && (
             <div className={styles.imageGallery}>
-              {listing.images.map((image: any, index: number) => (
+              {listing.images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImageIndex(index)}
@@ -133,7 +135,7 @@ export default function ListingDetailClient({
 
           <h4>{strings.listing.publicTransport}</h4>
           <ul>
-            {listing.transport.map((transport: any, index: number) => (
+            {listing.transport.map((transport, index) => (
               <li key={index}>
                 <strong>{transport.stationName}</strong> ({transport.type}) -{" "}
                 {transport.walkingMinutes} {strings.listing.walkingMinutes}
@@ -146,7 +148,7 @@ export default function ListingDetailClient({
 
           <h4>{strings.listing.nearby}</h4>
           <ul>
-            {listing.nearbyAmenities.map((amenity: any, index: number) => (
+            {listing.nearbyAmenities.map((amenity, index) => (
               <li key={index}>
                 <strong>{amenity.name}</strong> - {amenity.walkingMinutes}{" "}
                 {strings.listing.walkingMinutes}
@@ -347,9 +349,9 @@ export default function ListingDetailClient({
 
         {/* Back to Listings */}
         <div style={{ textAlign: "center" }}>
-          <a href="/ledigt" role="button" className="outline">
+          <Link href="/ledigt" role="button" className="outline">
             {strings.navigation.backToAllApartments}
-          </a>
+          </Link>
         </div>
       </aside>
     </div>
