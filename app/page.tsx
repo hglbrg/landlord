@@ -129,7 +129,7 @@ export default function HomePage() {
                         marginTop: '1rem',
                       }}
                     >
-                      <span className="rental-price">
+                      <span className="rental-price" data-type="number">
                         {listing.specifications.rentAmount.toLocaleString('sv-SE')} kr/
                         {strings.common.monthShort}
                       </span>

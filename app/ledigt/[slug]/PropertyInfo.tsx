@@ -1,14 +1,15 @@
-import { Listing } from "@/lib/types/listing";
-import strings from "@/lib/data/strings.json";
+import { Listing } from '@/lib/types/listing'
+import styles from './page.module.css'
+import strings from '@/lib/data/strings.json'
 
 interface PropertyInfoProps {
-  listing: Listing;
+  listing: Listing
 }
 
 export default function PropertyInfo({ listing }: PropertyInfoProps) {
   return (
-    <section>
-      <h3>{strings.listing.propertyInfo}</h3>
+    <article className={styles.contentSection}>
+      <h3 className={styles.heading3}>{strings.listing.propertyInfo}</h3>
       <dl>
         <dt>{strings.listing.yearBuilt}</dt>
         <dd>{listing.property.yearBuilt}</dd>
@@ -30,6 +31,6 @@ export default function PropertyInfo({ listing }: PropertyInfoProps) {
           </>
         )}
       </dl>
-    </section>
-  );
+    </article>
+  )
 }

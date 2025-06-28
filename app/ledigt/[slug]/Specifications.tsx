@@ -1,16 +1,16 @@
-import { DetailedFeatureList } from "@/lib/utils/get-features";
-import { Listing } from "@/lib/types/listing";
-import styles from "./page.module.css";
-import strings from "@/lib/data/strings.json";
+import { Listing } from '@/lib/types/listing'
+import styles from './page.module.css'
+import strings from '@/lib/data/strings.json'
+import { DetailedFeatureList } from '@/lib/utils/get-features'
 
 interface SpecificationsProps {
-  listing: Listing;
+  listing: Listing
 }
 
 export default function Specifications({ listing }: SpecificationsProps) {
   return (
-    <section>
-      <h3>{strings.listing.specifications}</h3>
+    <section className={styles.contentSection}>
+      <h3 className={styles.heading3}>{strings.listing.specifications}</h3>
       <div className={styles.specsGrid}>
         <article>
           <dl>
@@ -28,23 +28,20 @@ export default function Specifications({ listing }: SpecificationsProps) {
 
             <dt>{strings.listing.floor}</dt>
             <dd>
-              {listing.specifications.floor}{" "}
+              {listing.specifications.floor}{' '}
               {strings.listing.totalFloors.replace(
-                "{total}",
-                listing.specifications.totalFloors.toString(),
+                '{total}',
+                listing.specifications.totalFloors.toString()
               )}
             </dd>
           </dl>
         </article>
 
         <article>
-          <h4>Egenskaper & Bekvämligheter</h4>
-          <DetailedFeatureList
-            features={listing.features}
-            amenities={listing.amenities}
-          />
+          <h4 className={styles.heading4}>Egenskaper & Bekvämligheter</h4>
+          <DetailedFeatureList features={listing.features} amenities={listing.amenities} />
         </article>
       </div>
     </section>
-  );
+  )
 }

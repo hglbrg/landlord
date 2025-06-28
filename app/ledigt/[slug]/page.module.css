@@ -1,7 +1,78 @@
+/* === Layout === */
+.container {
+  max-width: 1024px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
 .mainGrid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.contentSection {
+  margin-bottom: 3rem;
+}
+
+/* === Typography === */
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.heading2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.heading3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.heading4 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.heading5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Image Gallery === */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: var(--pico-border-radius);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.motionWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--pico-border-radius);
 }
 
 .imageGallery {
@@ -27,31 +98,62 @@
   border-radius: var(--pico-border-radius);
 }
 
+/* === Navigation Arrows === */
+.navButton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+}
+
+.navRight {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.navLeft {
+  left: 0;
+}
+
+.imageContainer:hover .navButton {
+  opacity: 1;
+}
+
+/* === Price and Specs === */
 .priceAndSpecs {
   display: flex;
   gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
-.mainImage {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: var(--pico-border-radius);
-}
-
-.descriptionText {
-  white-space: pre-line;
-}
-
+/* === Specs Grid === */
 .specsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-/* Mobile responsive */
+/* === Description === */
+.descriptionText {
+  white-space: pre-line;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+/* === Mobile === */
 @media (max-width: 768px) {
   .mainGrid {
     grid-template-columns: 1fr;

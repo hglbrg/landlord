@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import { Agent } from '@/lib/types/listing'
 import strings from '@/lib/data/strings.json'
-import { Icon, LucideMailbox, Mail, Phone } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
+import styles from './page.module.css'
 
 interface AgentInfoProps {
   assignedAgent: Agent
@@ -11,7 +12,7 @@ export default function AgentInfo({ assignedAgent }: AgentInfoProps) {
   return (
     <article>
       <header>
-        <h4>Din kontakt</h4>
+        <h4 className={styles.heading4}>Din kontakt</h4>
       </header>
 
       <div
@@ -33,7 +34,9 @@ export default function AgentInfo({ assignedAgent }: AgentInfoProps) {
           }}
         />
         <div>
-          <h5 style={{ margin: 0, fontSize: '1.1rem' }}>{assignedAgent.personal.fullName}</h5>
+          <h5 className={styles.heading5} style={{ margin: 0 }}>
+            {assignedAgent.personal.fullName}
+          </h5>
           <p style={{ margin: '0.25rem 0', color: 'var(--pico-muted-color)' }}>
             {assignedAgent.personal.title}
           </p>

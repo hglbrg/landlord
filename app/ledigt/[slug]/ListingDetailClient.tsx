@@ -6,10 +6,14 @@ import LocationTransport from './LocationTransport'
 import PropertyInfo from './PropertyInfo'
 import QuickFacts from './QuickFacts'
 import AgentInfo from './AgentInfo'
+import RentalTerms from './RentalTerms'
+
 import { Listing, Agent } from '@/lib/types/listing'
+import strings from '@/lib/data/strings.json'
 import styles from './page.module.css'
 import MapComponent from '@/lib/components/Map'
 import { useState } from 'react'
+import Link from 'next/link'
 
 interface ListingDetailClientProps {
   listing: Listing
@@ -26,15 +30,15 @@ export default function ListingDetailClient({ listing, assignedAgent }: ListingD
 
         <Description description={listing.basic.description} />
 
-        {listing.floorPlanImages && listing.floorPlanImages.length > 0 && (
+        {listing.floorPlanImages?.length > 0 && (
           <section>
             <h3>Planlösning</h3>
             <ImageGallery images={listing.floorPlanImages} title="Planlösning" />
           </section>
         )}
 
-        <div style={{ marginBottom: '2rem' }}>
-          <h4>Plats</h4>
+        <section>
+          <h3>Plats</h3>
           <MapComponent
             latitude={listing.location.coordinates.latitude}
             longitude={listing.location.coordinates.longitude}
@@ -44,16 +48,22 @@ export default function ListingDetailClient({ listing, assignedAgent }: ListingD
             height="250px"
             zoom={16}
           />
+        </section>
+        <div className="grid">
+          <RentalTerms listing={listing} />
+          <LocationTransport listing={listing} />
         </div>
-
-        <LocationTransport listing={listing} />
-
-        <PropertyInfo listing={listing} />
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <Link href="/ledigt" role="button" className="outline">
+            {strings.navigation.backToAllApartments}
+          </Link>
+        </div>
       </div>
 
       <aside>
         <QuickFacts listing={listing} />
         {assignedAgent && <AgentInfo assignedAgent={assignedAgent} />}
+        <PropertyInfo listing={listing} />
       </aside>
     </div>
   )
