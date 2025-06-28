@@ -30,7 +30,7 @@ export default function ListingDetailClient({ listing, assignedAgent }: ListingD
 
         <Description description={listing.basic.description} />
 
-        {listing.floorPlanImages?.length > 0 && (
+        {listing.floorPlanImages?.length && (
           <section>
             <h3>Planlösning</h3>
             <ImageGallery images={listing.floorPlanImages} title="Planlösning" />
