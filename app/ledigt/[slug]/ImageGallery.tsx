@@ -13,14 +13,18 @@ interface ImageGalleryProps {
 }
 
 export default function ImageGallery({ images, title }: ImageGalleryProps) {
+  if (!images || images.length === 0) return null
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+  const [direction, setDirection] = useState<'left' | 'right'>('right')
   const maxIndex = images.length - 1
 
   const goToPrev = useCallback(() => {
+    setDirection('left')
     setSelectedImageIndex(i => (i > 0 ? i - 1 : maxIndex))
   }, [maxIndex])
 
   const goToNext = useCallback(() => {
+    setDirection('right')
     setSelectedImageIndex(i => (i < maxIndex ? i + 1 : 0))
   }, [maxIndex])
 
@@ -43,10 +47,18 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={currentImage.url}
-              initial={{ x: 100, opacity: 0 }}
+              className={styles.motionWrapper}
+              initial={{ x: direction === 'right' ? 100 : -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -100, opacity: 0 }}
+              exit={{ x: direction === 'right' ? -100 : 100, opacity: 0 }}
               transition={{ duration: 0.3 }}
+              drag={images.length > 1 ? 'x' : false}
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(event, info) => {
+                if (images.length <= 1) return
+                if (info.offset.x < -50) goToNext()
+                else if (info.offset.x > 50) goToPrev()
+              }}
             >
               <Image
                 src={currentImage.url}
@@ -58,20 +70,24 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
             </motion.div>
           </AnimatePresence>
         </div>
-        <button
-          onClick={goToPrev}
-          className={`${styles.navButton} ${styles.navLeft}`}
-          aria-label="Previous image"
-        >
-          <ChevronLeft />
-        </button>
-        <button
-          onClick={goToNext}
-          className={`${styles.navButton} ${styles.navRight}`}
-          aria-label="Next image"
-        >
-          <ChevronRight />
-        </button>
+        {images && images.length > 1 && (
+          <>
+            <button
+              onClick={goToPrev}
+              className={`${styles.navButton} ${styles.navLeft}`}
+              aria-label="Previous image"
+            >
+              <ChevronLeft />
+            </button>
+            <button
+              onClick={goToNext}
+              className={`${styles.navButton} ${styles.navRight}`}
+              aria-label="Next image"
+            >
+              <ChevronRight />
+            </button>
+          </>
+        )}
       </div>
 
       {images.length > 1 && (

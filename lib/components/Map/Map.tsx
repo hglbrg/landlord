@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import styles from './Map.module.css'
+import { ExternalLink } from 'lucide-react'
 
 interface MapComponentProps {
   latitude: number
@@ -73,11 +74,11 @@ export default function MapComponent({
 
         // Create new map
         const map = L.map(mapRef.current, {
-          zoomControl: false,
-          scrollWheelZoom: false,
-          dragging: false,
-          touchZoom: false,
-          doubleClickZoom: false,
+          zoomControl: true,
+          scrollWheelZoom: true,
+          dragging: true,
+          touchZoom: true,
+          doubleClickZoom: true,
         }).setView([latitude, longitude], zoom)
 
         // Add OpenStreetMap tiles
@@ -145,7 +146,7 @@ export default function MapComponent({
               <small style="color: #666;">Lat: ${latitude.toFixed(6)}, Lng: ${longitude.toFixed(6)}</small><br/>
               <button onclick="window.open('https://www.google.com/maps?q=${latitude},${longitude}', '_blank')" 
                       style="margin-top: 8px; padding: 4px 8px; background: #4285f4; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">
-                Öppna i Google Maps
+                Öppna i Google Maps <ExternalLink />
               </button>
             </div>`,
             { maxWidth: 250 }
@@ -162,36 +163,6 @@ export default function MapComponent({
             metric: true,
           })
           .addTo(map)
-
-        // Custom control for centering on marker
-        const centerControl = L.Control.extend({
-          onAdd: function () {
-            const div = L.DomUtil.create(
-              'div',
-              'leaflet-bar leaflet-control leaflet-control-custom'
-            )
-            div.style.backgroundColor = 'white'
-            div.style.backgroundImage =
-              'url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDJWMThNMiAxMEgxOCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K)'
-            div.style.backgroundSize = '16px 16px'
-            div.style.backgroundRepeat = 'no-repeat'
-            div.style.backgroundPosition = 'center'
-            div.style.width = '30px'
-            div.style.height = '30px'
-            div.style.cursor = 'pointer'
-            div.title = 'Centrera på markör'
-
-            div.onclick = function () {
-              map.setView([latitude, longitude], zoom)
-              marker.openPopup()
-            }
-
-            return div
-          },
-        })
-
-        // Add center control
-        map.addControl(new centerControl({ position: 'topleft' }))
 
         // Store map reference
         dialogMapRef.current._leaflet_map = map
@@ -283,7 +254,7 @@ export default function MapComponent({
           title="Klicka för att öppna större karta"
         />
         <div className={styles.mapOverlay} onClick={handleMapClick}>
-          <span className={styles.expandText}>🔍 Visa större karta</span>
+          <span className={styles.expandText}>Visa större karta</span>
         </div>
       </div>
 
@@ -301,7 +272,7 @@ export default function MapComponent({
                   className={styles.googleMapsButton}
                   title="Öppna i Google Maps"
                 >
-                  📍 Google Maps
+                  Google Maps <ExternalLink />
                 </button>
                 <button
                   onClick={handleDialogClose}
@@ -313,15 +284,6 @@ export default function MapComponent({
               </div>
             </header>
             <div ref={dialogMapRef} className={styles.dialogMap} />
-            <footer className={styles.dialogFooter}>
-              <small>
-                Använd musen eller touch för att navigera kartan. Klicka på markören för Google
-                Maps.
-              </small>
-              <button onClick={handleDialogClose} className={styles.dialogCloseBtn}>
-                Stäng
-              </button>
-            </footer>
           </div>
         </dialog>
       )}
