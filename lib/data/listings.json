@@ -201,26 +201,26 @@
 
       "features": {
         "balcony": false,
-        "garden": false,
-        "parking": true,
+        "garden": true,
+        "parking": false,
         "elevator": false,
         "storage": true,
-        "petsAllowed": true,
+        "petsAllowed": false,
         "smokingAllowed": false
       },
 
       "amenities": {
         "laundryRoom": true,
         "bikeStorage": true,
-        "fiberInternet": true,
+        "fiberInternet": false,
         "heatingIncluded": true,
         "waterIncluded": true,
-        "electricityIncluded": true,
+        "electricityIncluded": false,
         "internetIncluded": false
       },
 
       "rental": {
-        "depositAmount": 25000,
+        "depositAmount": 11300,
         "depositMonths": 2.0,
         "minimumRentalPeriod": 12,
         "availableFrom": "2025-07-15",

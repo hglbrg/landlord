@@ -13,45 +13,19 @@
         "email": "anna.svensson@email.com",
         "phone": "+46701234567",
         "avatar": "/anna-avatar.png",
-        "bio": "Privatperson som hyr ut lägenheter i Söderköping med omnejd. Svarar oftast inom 2 timmar och erbjuder personlig service för alla mina hyresgäster.",
+        "bio": "Privatperson som hyr ut lägenheter i Söderköping med omnejd. Erbjuder personlig service för alla mina hyresgäster.",
         "languages": ["Svenska", "Engelska"],
         "yearsExperience": 8
-      },
-      "workDetails": {
-        "responseTimeHours": 2,
-        "verified": true,
-        "specialties": [
-          "Historiska fastigheter",
-          "Centrala lägen",
-          "Långtidsuthyrning"
-        ],
-        "workingHours": {
-          "monday": { "start": "08:00", "end": "18:00" },
-          "tuesday": { "start": "08:00", "end": "18:00" },
-          "wednesday": { "start": "08:00", "end": "18:00" },
-          "thursday": { "start": "08:00", "end": "18:00" },
-          "friday": { "start": "08:00", "end": "17:00" },
-          "saturday": { "start": "10:00", "end": "15:00" },
-          "sunday": { "closed": true }
-        }
       },
       "coverage": {
         "primaryAreas": ["Söderköping", "Stockholm Södermalm"],
         "regions": ["Östergötland", "Stockholm"],
         "travelRadius": 50
       },
-      "statistics": {
-        "totalListings": 2,
-        "activeListings": 2,
-        "averageRating": 4.8,
-        "totalReviews": 23,
-        "successfulRentals": 47
-      },
+
       "contact": {
-        "preferredContact": "phone",
         "emergencyPhone": "+46701234567",
-        "officeAddress": null,
-        "meetingLocations": ["Söderköping centrum", "Slussen Stockholm"]
+        "officeAddress": null
       }
     },
     {
@@ -74,11 +48,7 @@
       "workDetails": {
         "responseTimeHours": 4,
         "verified": true,
-        "specialties": [
-          "Studentbostäder",
-          "Moderna lägenheter",
-          "Norrköpings centrum"
-        ],
+        "specialties": ["Studentbostäder", "Moderna lägenheter", "Norrköpings centrum"],
         "workingHours": {
           "monday": { "start": "09:00", "end": "17:00" },
           "tuesday": { "start": "09:00", "end": "17:00" },
@@ -90,11 +60,7 @@
         }
       },
       "coverage": {
-        "primaryAreas": [
-          "Norrköping centrum",
-          "Norrköping Öster",
-          "Norrköping Väster"
-        ],
+        "primaryAreas": ["Norrköping centrum", "Norrköping Öster", "Norrköping Väster"],
         "regions": ["Östergötland"],
         "travelRadius": 25
       },
@@ -109,10 +75,7 @@
         "preferredContact": "email",
         "emergencyPhone": "+46701234567",
         "officeAddress": "Drottninggatan 15, 602 24 Norrköping",
-        "meetingLocations": [
-          "Norrköping centrum",
-          "Linköpings universitet Campus Norrköping"
-        ]
+        "meetingLocations": ["Norrköping centrum", "Linköpings universitet Campus Norrköping"]
       }
     },
     {
@@ -135,11 +98,7 @@
       "workDetails": {
         "responseTimeHours": 6,
         "verified": true,
-        "specialties": [
-          "Studentbostäder",
-          "Universitetsområdet",
-          "Kollektivtrafik"
-        ],
+        "specialties": ["Studentbostäder", "Universitetsområdet", "Kollektivtrafik"],
         "workingHours": {
           "monday": { "start": "08:30", "end": "17:30" },
           "tuesday": { "start": "08:30", "end": "17:30" },
@@ -151,12 +110,7 @@
         }
       },
       "coverage": {
-        "primaryAreas": [
-          "Linköping centrum",
-          "Universitetsområdet",
-          "Ryd",
-          "Lambohov"
-        ],
+        "primaryAreas": ["Linköping centrum", "Universitetsområdet", "Ryd", "Lambohov"],
         "regions": ["Östergötland"],
         "travelRadius": 20
       },
@@ -171,11 +125,7 @@
         "preferredContact": "email",
         "emergencyPhone": "+46701234567",
         "officeAddress": null,
-        "meetingLocations": [
-          "Linköping centrum",
-          "Linköpings universitet",
-          "Ryd centrum"
-        ]
+        "meetingLocations": ["Linköping centrum", "Linköpings universitet", "Ryd centrum"]
       }
     }
   ],

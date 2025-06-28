@@ -1,23 +1,21 @@
-import Link from "next/link";
-import Image from "next/image";
-import { FeatureTags } from "@/lib/utils/get-features";
+import Link from 'next/link'
+import Image from 'next/image'
+import { FeatureTags } from '@/lib/utils/get-features'
 
 // Import data files
-import listingsData from "@/lib/data/listings.json";
-import agentsData from "@/lib/data/agents.json";
-import siteInfoData from "@/lib/data/siteInfo.json";
-import strings from "@/lib/data/strings.json";
+import listingsData from '@/lib/data/listings.json'
+import agentsData from '@/lib/data/agents.json'
+import siteInfoData from '@/lib/data/siteInfo.json'
+import strings from '@/lib/data/strings.json'
 
 export default function HomePage() {
   const primaryAgent = agentsData.agents.find(
-    (agent) => agent.id === siteInfoData.site.primaryAgentId,
-  );
-  const featuredListings = listingsData.listings.filter(
-    (listing) => listing.featured,
-  );
+    agent => agent.id === siteInfoData.site.primaryAgentId
+  )
+  const featuredListings = listingsData.listings.filter(listing => listing.featured)
   const allAvailableListings = listingsData.listings.filter(
-    (listing) => listing.status === "available",
-  );
+    listing => listing.status === 'available'
+  )
 
   return (
     <div className="container">
@@ -28,8 +26,8 @@ export default function HomePage() {
             <hgroup>
               <h1>
                 {strings.home.heroTitle.replace(
-                  "{ownerName}",
-                  primaryAgent?.personal.firstName || "Anna",
+                  '{ownerName}',
+                  primaryAgent?.personal.firstName || 'Anna'
                 )}
               </h1>
               <p>{strings.home.heroSubtitle}</p>
@@ -37,16 +35,16 @@ export default function HomePage() {
 
             <div
               style={{
-                display: "flex",
-                gap: "1rem",
-                flexWrap: "wrap",
-                marginTop: "2rem",
+                display: 'flex',
+                gap: '1rem',
+                flexWrap: 'wrap',
+                marginTop: '2rem',
               }}
             >
               <Link href="/ledigt" role="button">
                 {strings.home.seeAvailableApartments.replace(
-                  "{count}",
-                  allAvailableListings.length.toString(),
+                  '{count}',
+                  allAvailableListings.length.toString()
                 )}
               </Link>
               <Link href="/about" role="button" className="secondary">
@@ -66,17 +64,6 @@ export default function HomePage() {
               />
               <div>
                 <h4 style={{ margin: 0 }}>{primaryAgent.personal.fullName}</h4>
-                {primaryAgent.workDetails.verified && (
-                  <small style={{ color: "var(--pico-primary)" }}>
-                    ✓ {strings.common.verified}
-                  </small>
-                )}
-                <p className="response-time" style={{ margin: 0 }}>
-                  {strings.common.responseTime.replace(
-                    "{hours}",
-                    primaryAgent.workDetails.responseTimeHours.toString(),
-                  )}
-                </p>
               </div>
             </div>
           )}
@@ -96,10 +83,10 @@ export default function HomePage() {
               {(featuredListings.length > 0
                 ? featuredListings
                 : allAvailableListings.slice(0, 2)
-              ).map((listing) => {
+              ).map(listing => {
                 const assignedAgent = agentsData.agents.find(
-                  (agent) => agent.id === listing.assignedAgent,
-                );
+                  agent => agent.id === listing.assignedAgent
+                )
 
                 return (
                   <article key={listing.id} className="rental-card">
@@ -107,18 +94,18 @@ export default function HomePage() {
                       <Link href={`/ledigt/${listing.slug}`}>
                         <div
                           style={{
-                            position: "relative",
-                            height: "200px",
-                            borderRadius: "var(--pico-border-radius)",
-                            overflow: "hidden",
-                            display: "block",
+                            position: 'relative',
+                            height: '200px',
+                            borderRadius: 'var(--pico-border-radius)',
+                            overflow: 'hidden',
+                            display: 'block',
                           }}
                         >
                           <Image
-                            src={listing.images[0]?.url || ""}
+                            src={listing.images[0]?.url || ''}
                             alt={listing.images[0]?.alt || listing.basic.title}
                             fill
-                            style={{ objectFit: "cover" }}
+                            style={{ objectFit: 'cover' }}
                             sizes="(max-width: 768px) 100vw, 300px"
                           />
                         </div>
@@ -136,23 +123,17 @@ export default function HomePage() {
 
                     <div
                       style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        marginTop: "1rem",
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginTop: '1rem',
                       }}
                     >
                       <span className="rental-price">
-                        {listing.specifications.rentAmount.toLocaleString(
-                          "sv-SE",
-                        )}{" "}
-                        kr/{strings.common.monthShort}
+                        {listing.specifications.rentAmount.toLocaleString('sv-SE')} kr/
+                        {strings.common.monthShort}
                       </span>
-                      <Link
-                        href={`/ledigt/${listing.slug}`}
-                        role="button"
-                        className="outline"
-                      >
+                      <Link href={`/ledigt/${listing.slug}`} role="button" className="outline">
                         {strings.common.viewApartment}
                       </Link>
                     </div>
@@ -160,25 +141,20 @@ export default function HomePage() {
                     {assignedAgent && (
                       <footer>
                         <small>
-                          {strings.listings.contactMe}:{" "}
-                          {assignedAgent.personal.fullName} •
-                          {strings.common.responseTime.replace(
-                            "{hours}",
-                            assignedAgent.workDetails.responseTimeHours.toString(),
-                          )}
+                          {strings.listings.contactMe}: {assignedAgent.personal.fullName} •
                         </small>
                       </footer>
                     )}
                   </article>
-                );
+                )
               })}
             </div>
 
-            <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
               <Link href="/ledigt" role="button" className="secondary">
                 {strings.home.seeAllApartments.replace(
-                  "{count}",
-                  allAvailableListings.length.toString(),
+                  '{count}',
+                  allAvailableListings.length.toString()
                 )}
               </Link>
             </div>
@@ -201,16 +177,6 @@ export default function HomePage() {
           </article>
 
           <article>
-            <h4>{strings.home.fastCommunication}</h4>
-            <p>
-              {strings.home.fastCommunicationDesc.replace(
-                "{hours}",
-                primaryAgent?.workDetails.responseTimeHours.toString() || "2",
-              )}
-            </p>
-          </article>
-
-          <article>
             <h4>{strings.home.localFocus}</h4>
             <p>{strings.home.localFocusDesc}</p>
           </article>
@@ -221,8 +187,8 @@ export default function HomePage() {
       <section>
         <article
           style={{
-            textAlign: "center",
-            background: "var(--pico-card-sectioning-background-color)",
+            textAlign: 'center',
+            background: 'var(--pico-card-sectioning-background-color)',
           }}
         >
           <h3>{strings.home.cantFindWhat}</h3>
@@ -230,10 +196,10 @@ export default function HomePage() {
 
           <div
             style={{
-              display: "flex",
-              gap: "1rem",
-              justifyContent: "center",
-              flexWrap: "wrap",
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
             }}
           >
             {primaryAgent && (
@@ -241,11 +207,7 @@ export default function HomePage() {
                 <a href={`mailto:${primaryAgent.personal.email}`} role="button">
                   {strings.home.sendEmail}
                 </a>
-                <a
-                  href={`tel:${primaryAgent.personal.phone}`}
-                  role="button"
-                  className="secondary"
-                >
+                <a href={`tel:${primaryAgent.personal.phone}`} role="button" className="secondary">
                   {strings.home.callMe}
                 </a>
               </>
@@ -254,5 +216,5 @@ export default function HomePage() {
         </article>
       </section>
     </div>
-  );
+  )
 }

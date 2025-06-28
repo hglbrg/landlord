@@ -1,16 +1,16 @@
-import Link from "next/link";
-import styles from "./Footer.module.css";
+import Link from 'next/link'
+import styles from './Footer.module.css'
 
 interface FooterProps {
-  ownerName?: string;
-  ownerEmail?: string;
-  ownerPhone?: string;
+  ownerName?: string
+  ownerEmail?: string
+  ownerPhone?: string
 }
 
 export default function Footer({
-  ownerName = "Anna Svensson",
-  ownerEmail = "anna.svensson@email.com",
-  ownerPhone = "+46 70 123 45 67",
+  ownerName = 'Anna Svensson',
+  ownerEmail = 'anna.svensson@email.com',
+  ownerPhone = '+46 70 123 45 67',
 }: FooterProps) {
   return (
     <footer className={styles.footer}>
@@ -50,19 +50,16 @@ export default function Footer({
             <h6>Information</h6>
             <p className={styles.footerText}>
               Privatperson som hyr ut lägenheter i Söderköping med omnejd.
-              <br />
-              Svarar oftast inom 2 timmar.
             </p>
           </div>
         </div>
 
         <div className={styles.footerBottom}>
           <small>
-            © {new Date().getFullYear()} {ownerName}. Alla rättigheter
-            förbehållna.
+            © {new Date().getFullYear()} {ownerName}. Alla rättigheter förbehållna.
           </small>
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import { FeatureList } from "@/lib/utils/get-features";
-import { Listing } from "@/lib/types/listing";
-import strings from "@/lib/data/strings.json";
+import { FeatureList } from '@/lib/utils/get-features'
+import { Listing } from '@/lib/types/listing'
+import strings from '@/lib/data/strings.json'
 
 interface QuickFactsProps {
-  listing: Listing;
+  listing: Listing
 }
 
 export default function QuickFacts({ listing }: QuickFactsProps) {
@@ -13,16 +13,16 @@ export default function QuickFacts({ listing }: QuickFactsProps) {
         <h4>Snabbfakta</h4>
       </header>
 
-      <dl style={{ marginBottom: "1.5rem" }}>
+      <dl style={{ marginBottom: '1.5rem' }}>
         <dt>{strings.common.rent}</dt>
         <dd
           style={{
-            fontSize: "1.2rem",
-            fontWeight: "bold",
-            color: "var(--pico-primary)",
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            color: 'var(--pico-primary)',
           }}
         >
-          {listing.specifications.rentAmount.toLocaleString("sv-SE")}{" "}
+          {listing.specifications.rentAmount.toLocaleString('sv-SE')}{' '}
           {listing.specifications.currency}/mån
         </dd>
 
@@ -32,46 +32,33 @@ export default function QuickFacts({ listing }: QuickFactsProps) {
         <dt>{strings.common.rooms}</dt>
         <dd>{listing.specifications.rooms} rum</dd>
 
-        <dt>{strings.common.deposit}</dt>
-        <dd>
-          {listing.rental.depositAmount.toLocaleString("sv-SE")}{" "}
-          {listing.specifications.currency}
-        </dd>
-
         <dt>{strings.common.availableFrom}</dt>
-        <dd>
-          {new Date(listing.rental.availableFrom).toLocaleDateString("sv-SE")}
-        </dd>
+        <dd>{new Date(listing.rental.availableFrom).toLocaleDateString('sv-SE')}</dd>
 
         <dt>{strings.listing.floor}</dt>
         <dd>
-          Våning {listing.specifications.floor} av{" "}
-          {listing.specifications.totalFloors}
+          Våning {listing.specifications.floor} av {listing.specifications.totalFloors}
         </dd>
       </dl>
 
       <div
         style={{
-          padding: "1rem",
-          backgroundColor: "var(--pico-muted-background-color)",
-          borderRadius: "var(--pico-border-radius)",
-          fontSize: "0.9rem",
+          padding: '1rem',
+          backgroundColor: 'var(--pico-muted-background-color)',
+          borderRadius: 'var(--pico-border-radius)',
+          fontSize: '0.9rem',
         }}
       >
-        <strong>Uthyrningstyp:</strong>{" "}
-        {listing.rental.leaseType === "long_term"
-          ? "Långtidsuthyrning"
-          : "Korttidsuthyrning"}
+        <strong>Uthyrningstyp:</strong>{' '}
+        {listing.rental.leaseType === 'long_term' ? 'Långtidsuthyrning' : 'Korttidsuthyrning'}
         <br />
-        <strong>Möblering:</strong>{" "}
-        {listing.rental.furnished ? "Möblerad" : "Omöblerad"}
+        <strong>Möblering:</strong> {listing.rental.furnished ? 'Möblerad' : 'Omöblerad'}
         <br />
-        <strong>Min. hyrestid:</strong> {listing.rental.minimumRentalPeriod}{" "}
-        månader
+        <strong>Min. hyrestid:</strong> {listing.rental.minimumRentalPeriod} månader
       </div>
 
-      <div style={{ marginBottom: "1rem" }}>
-        <h5 style={{ marginBottom: "0.75rem" }}>Viktiga egenskaper</h5>
+      <div style={{ marginBottom: '1rem' }}>
+        <h5 style={{ marginBottom: '0.75rem' }}>Viktiga egenskaper</h5>
         <FeatureList
           features={listing.features}
           amenities={listing.amenities}
@@ -80,5 +67,5 @@ export default function QuickFacts({ listing }: QuickFactsProps) {
         />
       </div>
     </article>
-  );
+  )
 }
