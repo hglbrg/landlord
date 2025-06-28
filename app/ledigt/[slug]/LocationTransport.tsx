@@ -19,7 +19,7 @@ export default function LocationTransport({ listing }: LocationTransportProps) {
           <li key={index}>
             <strong>{transport.stationName}</strong> ({transport.type}) – {transport.walkingMinutes}{' '}
             {strings.listing.walkingMinutes}
-            {transport.lines?.length > 0 && <span> • Linjer: {transport.lines.join(', ')}</span>}
+            {transport.lines?.length && <span> • Linjer: {transport.lines.join(', ')}</span>}
           </li>
         ))}
       </ul>
